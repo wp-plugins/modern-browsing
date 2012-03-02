@@ -10,9 +10,10 @@ Modern browsing is shows a non-instrusive and cool bar at the top of the page de
 
 == Description ==
 
-Modern browsing is shows a non-instrusive and cool bar at the top of the page depending on the browser. The difference, you set which browser is obsolete for your site.
+Modern browsing shows a non-instrusive and cool bar at the top of the page depending on the browser. The difference, you set which browser is obsolete for your site.
 
 It supports:
+
 *	Safari
 *	Firefox
 *	Opera
