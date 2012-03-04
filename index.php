@@ -13,7 +13,7 @@ $url = plugins_url();
 
 class modern_browse {
 	function javascript_init() {
-		wp_register_style('mb_style', WP_PLUGIN_URL . '/modern-browser/style.css');
+		wp_register_style('mb_style', WP_PLUGIN_URL . '/modern-browsing/style.css');
 		
 		if(!is_admin()) {
 			wp_enqueue_script('jquery');
@@ -82,7 +82,7 @@ class modern_browse {
 		if(!is_admin()) {
 			
 			//Thanks to http://chrisschuld.com/projects/browser-php-detecting-a-users-browser-from-php/
-			include_once(WP_PLUGIN_DIR . '/modern-browser/Browser.php');
+			include_once(WP_PLUGIN_DIR . '/modern-browsing/Browser.php');
 		}
 		load_plugin_textdomain( 'mb', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 	}
