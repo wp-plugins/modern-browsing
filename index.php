@@ -3,7 +3,7 @@
 Plugin Name: Modern Browsing
 Plugin URI: http://royalestudios.com/blog/labs/modern-browsing/
 Description: The plugin detects the browser and if it's obsolte it shows an alternative non intrusive suggestion
-Version: 0.1
+Version: 0.2
 Author: Royal Estudios
 Author URI: http://royalestudios.com
 License: GPL2
@@ -13,7 +13,7 @@ $url = plugins_url();
 
 class modern_browse {
 	function javascript_init() {
-		wp_register_style('mb_style', WP_PLUGIN_URL . '/modern-browser/style.css');
+		wp_register_style('mb_style', WP_PLUGIN_URL . '/modern-browsing/style.css');
 		
 		if(!is_admin()) {
 			wp_enqueue_script('jquery');
@@ -39,9 +39,9 @@ class modern_browse {
         <?php
 			$browser_list = array(
 				'Internet Explorer' => array('6' => '6+', '7' => '7+', '8' => '8+','9'=> '9+'),
-				'Safari' => array('3' => '3+', '4' => '4+', '5' => '5+', '5.1' => '5.1+'),
+				'Safari' => array('522.11' => '3+', '530.17' => '4+', '533.16' => '5+', '534.52' => '5.1+'),
 				'Firefox' => array('3' => '3+', '4' => '4+', '5' => '5+', '6' => '6+', '7' => '7+', '8' => '8+', '9' => '9+', '10' => '10+', '11' => '11+'),
-				'Opera' => array('8' => '8+', '9' => '9+', '10' => '10+', '11' => '11+')
+				'Opera' => array('8' => '8+', '9' => '9+', '10' => '10+', '11' => '11+', '12' => '12+')
 			);
 		?>
         <table class="form-table">
@@ -82,7 +82,8 @@ class modern_browse {
 		if(!is_admin()) {
 			
 			//Thanks to http://chrisschuld.com/projects/browser-php-detecting-a-users-browser-from-php/
-			include_once(WP_PLUGIN_DIR . '/modern-browser/Browser.php');
+			include_once(WP_PLUGIN_DIR . '/modern-browsing/Browser.php');
+			
 		}
 		load_plugin_textdomain( 'mb', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 	}
@@ -133,22 +134,27 @@ jQuery(function($){
 		$(this).toggleClass('opened');
 		return false;
 	});
+	
 	var browser;
+	browser = $.browser;
 	
 	var text = '<?php echo $message; ?>';
 	var content = '<?php echo $content; ?>';
 	var currentBrowser = '<?php echo $current_browser_item; ?>';
 	var icons = '<?php echo $benefits_icons; ?>';
+	var selectedBrowserVersion = '<?php echo $browser_option[$current_browser_item]; ?>';
 	
 	function constructor(browserName, version){
 		$('body').prepend('<div class="mb_toolbar ' + browserName + '"><div class="mb_wrap"><div class="mb_content">' + content  + icons + '</div><div class="mb_handle">' + text + '</div></div></div>');
 	}
-	<?php if(intval($browser_option[$current_browser_item]) > $browser->getVersion() ) { ?>
-	constructor(currentBrowser, '<?php $browser->getVersion() ?>');
-	<?php } ?>
-	
+	if(browser.webkit){
+		browser.version = parseFloat(browser.version);
+	}
+	if(browser.version < selectedBrowserVersion){
+		constructor(currentBrowser, browser.version);
+	}
 });
-</script>	
+</script>
 	<?php 
 		} //admin
 	} //show_bar
