@@ -6,7 +6,7 @@ Requires at least: 3.0
 Tested up to: 3.3.1
 Stable tag: 0.2
 
-Modern browsing is shows a non-instrusive and cool bar at the top of the page depending on the browser.
+Modern browsing shows a non-instrusive and cool bar at the top of the page depending on the browser.
 
 == Description ==
 
@@ -26,11 +26,8 @@ Also has:
 
 == Installation ==
 
-This section describes how to install the plugin and get it working.
 
-e.g.
-
-1. Upload 'modern-browsing' to the `/wp-content/plugins/` directory
+1. Upload `modern-browsing` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Configure it in Options/Modern-Browsing
 
@@ -59,6 +56,6 @@ FOlder error that causes broken files
 = 0.1 =
 First version.
 
-== Arbitrary section ==
+== Check out more ==
 
-Check [The Royal Framework](http://trf.royalestudios.com/)
+Check [The Royal Framework](http://trf.royalestudios.com/) a Wordpress Theme Framework by Royal Estudios
