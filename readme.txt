@@ -4,7 +4,7 @@ Donate link: http://jepserbernardino.com/donate/
 Tags: browsing, ie6, update browser
 Requires at least: 3.0
 Tested up to: 3.3.1
-Stable tag: 0.2
+Stable tag: 0.3
 
 Modern browsing shows a non-instrusive and cool bar at the top of the page depending on the browser.
 
@@ -49,6 +49,9 @@ In this version not.
 4. Adminitration Panel
 
 == Changelog ==
+
+= 0.3 =
+Error on Opera browser version on PHP, also de constructor of the message now is created by javascript to avoid cache problems
 
 = 0.2 =
 FOlder error that causes broken files
