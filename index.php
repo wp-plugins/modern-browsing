@@ -3,7 +3,7 @@
 Plugin Name: Modern Browsing
 Plugin URI: http://royalestudios.com/blog/labs/modern-browsing/
 Description: The plugin detects the browser and if it's obsolte it shows an alternative non intrusive suggestion
-Version: 0.1
+Version: 0.2
 Author: Royal Estudios
 Author URI: http://royalestudios.com
 License: GPL2

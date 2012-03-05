@@ -4,7 +4,7 @@ Donate link: http://jepserbernardino.com/donate/
 Tags: browsing, ie6, update browser
 Requires at least: 3.0
 Tested up to: 3.3.1
-Stable tag: 0.1
+Stable tag: 0.2
 
 Modern browsing is shows a non-instrusive and cool bar at the top of the page depending on the browser.
 
@@ -14,10 +14,10 @@ Modern browsing shows a non-instrusive and cool bar at the top of the page depen
 
 It supports:
 
-*	Safari
-*	Firefox
-*	Opera
-*	Internet Explorer
+*   Safari
+*   Firefox
+*   Opera
+*   Internet Explorer
 
 Also has:
 
@@ -53,7 +53,10 @@ In this version not.
 
 == Changelog ==
 
-= 0.5 =
+= 0.2 =
+FOlder error that causes broken files
+
+= 0.1 =
 First version.
 
 == Arbitrary section ==
