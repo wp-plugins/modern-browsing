@@ -1,7 +1,7 @@
 === Plugin Name ===
 Contributors: jepser
 Donate link: http://jepserbernardino.com/donate/
-Tags: browsing, ie6, update browser
+Tags: browsing, ie6, update browser, obsolete browser
 Requires at least: 3.0
 Tested up to: 3.3.1
 Stable tag: 0.3
