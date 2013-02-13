@@ -3,8 +3,8 @@ Contributors: jepser
 Donate link: http://jepserbernardino.com/donate/
 Tags: browsing, ie6, update browser
 Requires at least: 3.0
-Tested up to: 3.3.1
-Stable tag: 0.3
+Tested up to: 3.5
+Stable tag: 0.4
 
 Modern browsing shows a non-instrusive and cool bar at the top of the page depending on the browser.
 
