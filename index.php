@@ -3,7 +3,7 @@
 Plugin Name: Modern Browsing
 Plugin URI: http://royalestudios.com/blog/labs/modern-browsing/
 Description: The plugin detects the browser and if it's obsolte it shows an alternative non intrusive suggestion
-Version: 0.2
+Version: 0.4
 Author: Royal Estudios
 Author URI: http://royalestudios.com
 License: GPL2
@@ -38,9 +38,9 @@ class modern_browse {
 		<?php do_settings_fields('modern-browsing', 'mb_settings' ); ?>
         <?php
 			$browser_list = array(
-				'Internet Explorer' => array('6' => '6+', '7' => '7+', '8' => '8+','9'=> '9+'),
-				'Safari' => array('522.11' => '3+', '530.17' => '4+', '533.16' => '5+', '534.52' => '5.1+'),
-				'Firefox' => array('3' => '3+', '4' => '4+', '5' => '5+', '6' => '6+', '7' => '7+', '8' => '8+', '9' => '9+', '10' => '10+', '11' => '11+'),
+				'Internet Explorer' => array('6' => '6+', '7' => '7+', '8' => '8+','9'=> '9', '10' => '10+'),
+				'Safari' => array('522.11' => '3+', '530.17' => '4+', '533.16' => '5+', '534.52' => '5.1','536.25' => '6.0'),
+				'Firefox' => array('3' => '3+', '4' => '4+', '5' => '5+', '6' => '6+', '7' => '7+', '8' => '8+', '9' => '9+', '10' => '10+', '11' => '11', '18' => '18'),
 				'Opera' => array('8' => '8+', '9' => '9+', '10' => '10+', '11' => '11+', '12' => '12+')
 			);
 		?>
@@ -77,7 +77,7 @@ class modern_browse {
     </form>
 </div>
 <?php
-	}
+	} //options_page
 	function browser(){
 		if(!is_admin()) {
 			
@@ -126,12 +126,15 @@ class modern_browse {
 <script type="text/javascript">
 jQuery(function($){
 	$('.mb_mi').live('click', function(){
-		if($(this).hasClass('opened')){
-			$('.mb_toolbar').stop(true, true).animate({ top : -170}, 300);
+		var toolbar = $('.mb_toolbar');
+		if(toolbar.hasClass('opened')){
+			toolbar.animate({ top : -170}, 300, function(){
+			});
 		} else{
-			$('.mb_toolbar').stop(true, true).animate({ top : 0}, 300);
+			toolbar.animate({ top : 0}, 300, function(){
+			});
 		}
-		$(this).toggleClass('opened');
+		toolbar.toggleClass('opened');
 		return false;
 	});
 	
@@ -147,8 +150,8 @@ jQuery(function($){
 	function constructor(browserName, version){
 		$('body').prepend('<div class="mb_toolbar ' + browserName + '"><div class="mb_wrap"><div class="mb_content">' + content  + icons + '</div><div class="mb_handle">' + text + '</div></div></div>');
 	}
-	if(browser.webkit){
-		browser.version = parseFloat(browser.version);
+	if(browser.webkit || browser.mozilla){
+		browserVersion = parseFloat(browser.version);
 	}
 	if(browser.version < selectedBrowserVersion){
 		constructor(currentBrowser, browser.version);

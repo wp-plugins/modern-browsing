@@ -38,8 +38,15 @@
 		}
 	.mb_content .mb_title{
 		border-bottom:1px solid #FFF;
-		margin:0;
-	}
+		margin:0 0 10px;
+		
+	}	
+		.mb_content .mb_title h3{
+			font-family:Georgia, "Times New Roman", Times, serif;
+			text-transform:none!important;
+			font-style:italic;
+			margin:10px 0;
+		}
 	.mb_toolbar .mb_handle{
 		height:23px;
 		background:url(images/mini-browser-sprites.png) no-repeat left top;
@@ -75,6 +82,7 @@
 			background:url(images/open-close.png) no-repeat right -5px;
 			padding:0 10px 0 0;
 			padding:2px 20px 2px 0;
+			outline:none;
 		}
 			.mb_handle .mb_mi.opened{
 				background-position:right -33px;
