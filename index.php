@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name: Modern Browsing
-Plugin URI: http://royalestudios.com/blog/labs/modern-browsing/
+Plugin URI: http://jepser.com/labs/modern-browsing/
 Description: The plugin detects the browser and if it's obsolte it shows an alternative non intrusive suggestion
-Version: 0.4
-Author: Royal Estudios
+Version: 0.5
+Author: Royale Studios
 Author URI: http://royalestudios.com
 License: GPL2
 */
@@ -13,7 +13,7 @@ $url = plugins_url();
 
 class modern_browse {
 	function javascript_init() {
-		wp_register_style('mb_style', WP_PLUGIN_URL . '/modern-browsing/style.css');
+		wp_register_style('mb_style', plugin_dir_url( __FILE__ ) . '/style.css');
 		
 		if(!is_admin()) {
 			wp_enqueue_script('jquery');
@@ -38,10 +38,11 @@ class modern_browse {
 		<?php do_settings_fields('modern-browsing', 'mb_settings' ); ?>
         <?php
 			$browser_list = array(
-				'Internet Explorer' => array('6' => '6+', '7' => '7+', '8' => '8+','9'=> '9', '10' => '10+'),
-				'Safari' => array('522.11' => '3+', '530.17' => '4+', '533.16' => '5+', '534.52' => '5.1','536.25' => '6.0'),
-				'Firefox' => array('3' => '3+', '4' => '4+', '5' => '5+', '6' => '6+', '7' => '7+', '8' => '8+', '9' => '9+', '10' => '10+', '11' => '11', '18' => '18'),
-				'Opera' => array('8' => '8+', '9' => '9+', '10' => '10+', '11' => '11+', '12' => '12+')
+				'Internet Explorer' => array('6' => '6+', '7' => '7+', '8' => '8+','9'=> '9+', '10' => '10+', '11' => '11+'),
+				'Safari' 	=> array('522.11' => '3+', '530.17' => '4+', '533.16' => '5+', '534.52' => '5.1+','536.25' => '6.0+', '537.71' => '7.0+', '538.35' => '8.0', '600.7' => '8.0.7+'),
+				'Firefox' 	=> array('3' => '3+', '4' => '4+', '5' => '5+', '6' => '6+', '7' => '7+', '8' => '8+', '9' => '9+', '10' => '10+', '11' => '11+', '18' => '18', '25' => '25+', '32' => '32', '39' => '39+'),
+				'Opera' 	=> array('8' => '8+', '9' => '9+', '10' => '10+', '11' => '11+', '12' => '12+'),
+				// 'Chrome'	=> array('')
 			);
 		?>
         <table class="form-table">
@@ -82,7 +83,7 @@ class modern_browse {
 		if(!is_admin()) {
 			
 			//Thanks to http://chrisschuld.com/projects/browser-php-detecting-a-users-browser-from-php/
-			include_once(WP_PLUGIN_DIR . '/modern-browsing/Browser.php');
+			include_once(  plugin_dir_path( __FILE__ ) . 'Browser.php');
 			
 		}
 		load_plugin_textdomain( 'mb', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
@@ -93,7 +94,12 @@ class modern_browse {
 		$browser_option = get_option('browser');
 		
 		//browsers download
-		$updated_browsers = array('safari' => 'http://www.apple.com/es/safari/download/', 'firefox' =>'http://www.mozilla.org/en-US/firefox/new/', 'internet-explorer' => 'http://windows.microsoft.com/es-ES/internet-explorer/products/ie/home', 'opera' => 'http://www.opera.com/download/');
+		$updated_browsers = array(
+								'safari' => 'http://www.apple.com/es/safari/download/', 
+								'firefox' =>'http://www.mozilla.org/en-US/firefox/new/', 
+								'internet-explorer' => 'http://windows.microsoft.com/es-ES/internet-explorer/products/ie/home', 
+								'opera' => 'http://www.opera.com/download/'
+							);
 		
 		//creating a new Browser
 		$browser = new Browser();
@@ -127,13 +133,6 @@ class modern_browse {
 jQuery(function($){
 	$('.mb_mi').live('click', function(){
 		var toolbar = $('.mb_toolbar');
-		if(toolbar.hasClass('opened')){
-			toolbar.animate({ top : -170}, 300, function(){
-			});
-		} else{
-			toolbar.animate({ top : 0}, 300, function(){
-			});
-		}
 		toolbar.toggleClass('opened');
 		return false;
 	});
@@ -153,6 +152,7 @@ jQuery(function($){
 	if(browser.webkit || browser.mozilla){
 		browserVersion = parseFloat(browser.version);
 	}
+	console.log(browser.version)
 	if(browser.version < selectedBrowserVersion){
 		constructor(currentBrowser, browser.version);
 	}
